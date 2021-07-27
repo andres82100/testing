@@ -1,0 +1,49 @@
+plugins {
+    
+    id 'java-library'
+    id 'io.quarkus' version '1.12.2.Final'
+    
+    
+}
+
+repositories {
+    
+    jcenter()
+}
+ext{
+quarkusVersion='1.12.2.Final'
+}
+
+
+dependencies {
+    //Quarkus framwork
+    implementation enforcedPlatform("io.quarkus:quarkus-universe-bom:${quarkusVersion}")
+    compile group:'io.quarkus', name: 'quarkus-resteasy'
+    
+    //Jpa    
+	implementation group: 'io.quarkus', name: 'quarkus-hibernate-orm'    
+    compile group: 'io.quarkus', name: 'quarkus-jdbc-postgresql'
+    compile group: 'io.quarkus', name: 'quarkus-resteasy-jsonb'
+    
+    //Servidor registro y configuration
+	// implementation group: 'org.microprofile-ext.config-ext', name: 'configsource-consul', version: '1.0.11'    
+	 compile "com.ecwid.consul:consul-api:1.4.5"
+	//Micrprofile health
+	implementation group: 'io.quarkus', name: 'quarkus-smallrye-health'
+	
+	//quarku Rest Client
+	implementation group: 'io.quarkus', name: 'quarkus-rest-client'
+	implementation group: 'io.quarkus', name: 'quarkus-rest-client-jackson'
+	//quarkus open traicing
+	 implementation group: 'io.quarkus', name: 'quarkus-smallrye-opentracing'
+	//quarkus open traicing jdbc
+	implementation group: 'io.opentracing.contrib', name: 'opentracing-jdbc', version: '0.2.15'
+	//metrics
+	implementation group: 'io.quarkus', name: 'quarkus-smallrye-metrics'
+	//dependencia fault tolerance    
+	implementation group: 'io.quarkus', name: 'quarkus-smallrye-fault-tolerance'
+	//dependencia jwt
+	implementation group: 'io.quarkus', name: 'quarkus-smallrye-jwt'
+	implementation group: 'io.quarkus', name: 'quarkus-smallrye-jwt-build'
+	
+    }
